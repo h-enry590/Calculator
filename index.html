@@ -1,164 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #111;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculator {
+      width: 95%;
+      max-width: 400px;
+      background: #222;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    #display {
+      width: 100%;
+      height: 70px;
+      background: #000;
+      color: #fff;
+      font-size: 2em;
+      text-align: right;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    button {
+      flex: 1 1 22%;
+      height: 60px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    .yellowBtn {
+      background: #ffb700;
+      color: #000;
+    }
+
+    .soon {
+      background: #ff3b30;
+    }
+
+    @media (max-width: 480px) {
+      button {
+        flex: 1 1 22%;
+        height: 50px;
+        font-size: 1em;
+      }
+
+      #display {
+        font-size: 1.5em;
+        height: 60px;
+      }
+
+      .calculator {
+        width: 100%;
+        padding: 15px;
+        border-radius: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="calculator">
+    <div id="display"></div>
+    <div class="buttons">
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('+')" class="yellowBtn">+</button>
 
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')" class="yellowBtn">-</button>
 
-<div id="calculator"class="calculator">
-    <input id="display" class="display" readonly>
-    <div id="keys">
-       
-        <button onclick="appendToDisplay('7')">7</button>
-        <button onclick="appendToDisplay('8')">8</button>
-        <button onclick="appendToDisplay('9')">9</button>
-        <button onclick="appendToDisplay('+')"class="operator.btn yellowBtn">+</button>
-        <button onclick="appendToDisplay('4')">4</button>
-        <button onclick="appendToDisplay('5')">5</button>
-        <button onclick="appendToDisplay('6')">6</button>
-        <button onclick="appendToDisplay('-')" class="operator.btn yellowBtn">-</button>
-        <button onclick="appendToDisplay('1')">1</button>
-        <button onclick="appendToDisplay('2')">2</button>
-        <button onclick="appendToDisplay('3')">3</button>
-        <button onclick="appendToDisplay('*')" class="operator.btn yellowBtn">*</button>
-        <button onclick="appendToDisplay('0')">0</button>
-        <button onclick="appendToDisplay('.')">.</button>
-        <button onclick="calculate()"class="operator.btn yellowBtn">= </button>
-        <button onclick="appendToDisplay('/')"class="operator.btn yellowBtn">/</button>
-        <button onclick="clearDisplay()" id="sat" class="soon">C</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('')" class="yellowBtn"></button>
+
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="calculate()" class="yellowBtn">=</button>
+      <button onclick="appendToDisplay('/')" class="yellowBtn">/</button>
+      <button onclick="clearDisplay()" class="soon">C</button>
     </div>
-</div>
-<style>
+  </div>
 
-    *{
-        box-sizing:border-box;
-        margin:0;
-        padding:0;
-    }
+  <script>
+    let display = document.getElementById('display');
 
-    body{
-        margin:0;
-        display:flex;
-        flex-flow: inherit;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        background-color:hsl(0, 0%, 95%);
-    }
-    .display{
-        min-width:max-content;
-    }
-    #calculator{
-        font-family:araial,sans-serif;
-        width:90%;
-        background-color:hsl(0, 0%, 15%);
-        border-radius:10px;
-        max-width:400px;
-        padding:20px;
-        overflow: hidden;
-    }
-    #display{
-        width:100%;
-        height:70px;
-        padding:20px;
-        font-size:2em;
-        text-align:left;
-        border-radius:10px;
-        margin-bottom: 15px;
-        cursor:pointer;
-        background-color:hsl(0, 0%, 20%);
-        color:white;
-        transition:0.2s;
-    }
-    #keys{
-        display:grid;
-        grid-template-columns:repeat(4, 1fr);
-        gap:10px;
-        padding:25px;
-    }
-    button{
-        width:100px;
-        height:100px;
-        border-radius:50px;
-        border:none;
-        background-color:hsl(0, 0%, 30%);
-        color:white;
-        font-size:3rem;
-        font-weight:bold;
-        cursor:pointer;
-    }
-    button:hover{
-        background-color: hsl(0,0%,40%);
-    }
-    button:active{
-        background:hsl(0, 0%, 50%)
-
-    }
-    .yellowBtn{
-        background-color: hsl(35,100%,65%) ;
-    }
-    .operator.btn{
-        background-color:hsl(35,100%,65%) !important;
+    function appendToDisplay(value) {
+      display.innerText += value;
     }
 
-    .operator.btn:hover{
-        background-color:hsl(35,100%,65%);
-    }
-    .operator.btn:active{
-        background-color:hsl(35,100%,75%);
+    function clearDisplay() {
+      display.innerText = '';
     }
 
-    @media (max-width:500px){
-        button{
-            width:22px;
-            height:50px;
-            font-size:1em;
-        }
-    
-        #calculator{
-            max-width:100%;
-        }
-        button{
-            width:100%;
-            height:80px;
-            font-size:2rem;
-        }
-        #display{
-            height:50px;
-            font-size:1.5rem;
-            padding:10px;
-        }
-        .calculator{
-            padding:15px;
-            width:95%;
-        }
+    function calculate() {
+      try {
+        display.innerText = eval(display.innerText);
+      } catch {
+        display.innerText = 'Error';
+      }
     }
-</style>
-<script>
-    const diplay = document.getElementById("display");
-   
-
-    function appendToDisplay(input){
-        display.value += input;
-    }
-
-    function clearDisplay(){
-        display.value ="";
-    }
-
-    function calculate(){
-        try{
-             display.value = eval(display.value);
-        }
-        catch(error){
-            display.value = "Error";        
-        }  
-    }
-</script>
+  </script>
 </body>
-
 </html>
