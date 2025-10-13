@@ -4,11 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Calculator</title>
+    <title>Document</title>
 </head>
 <body>
+    <script>
+       /* function calculateMark () {
+          
+            let Maths = Number(prompt('Enter your Maths mark:'));
+            let Science = Number(prompt('Enter your Science mark:'));
+            let English = Number(prompt('Enter your English mark:'));
+      
+
+
+            let totalMark = Maths + Science + English;
+            let averageMark = totalMark/3;
+
+            console.log("Total Marks:", totalMark);
+            console.log("Average Marks:", averageMark);
+
+            if (averageMark >= 80 &&  averageMark <= 100) {
+                console.log('Grade A');
+            } else if (averageMark >= 70 && averageMark <= 80) {
+                console.log('Grade B');
+            } else if (averageMark >=60 && averageMark <= 70) {
+              console.log('Grade C') ; 
+            }
+            else if (averageMark >= 50 && averageMark <= 60) {
+                console.log('Grade D');
+            } else if (averagemark < 50) {
+                console.log('Grade F')
+            }
+
+        }
+        calculateMark()
+        
+        
+       function atmMachine() {
+        let balance = 2000;
+        const pin = 7123;
+
+        let userPin = Number(prompt('Enter your PIN:'));
+        if (userPin === pin) {
+            let action = prompt('Choose an action: withdraw, deposit, check balance').toLowerCase();
+            if (action === 'withdraw') {
+                let amount = Number(prompt('Enter amount to withdraw:'));
+                if (amount <= balance) {
+                    balance -= amount;
+                    console.log(`You have withdrawn $${amount}. New balance is $${balance}.`);
+                } else {
+                    console.log('Insufficient funds.');
+                }
+            } else if (action === 'deposit') {
+                let amount = Number(prompt('Enter amount to deposit:'));
+                balance += amount;
+                console.log(`You have deposited $${amount}. New balance is $${balance}.`);
+            } else if (action === 'check balance') {
+                console.log(`Your current balance is $${balance}.`);
+            } else {
+                console.log('Invalid action.');
+            }
+        } else {
+            console.log('Incorrect PIN.');
+        }
+       }
+         atmMachine()
+         
+
+
+
+
+         function calculator(){
+            let num1 = Number(prompt('Enter first number:'));
+            let num2 = Number(prompt('Enter second number:'));
+            let operation = prompt('Choose an operation: add, subtract, multiply, divide').toLowerCase();
+
+            let result;
+            if (operation === 'add') {
+                result = num1 + num2;
+                console.log(`Result: ${num1} + ${num2} = ${result}`);
+            } else if (operation === 'subtract') {
+                result = num1 - num2;
+                console.log(`Result: ${num1} - ${num2} = ${result}`);
+            } else if (operation === 'multiply') {
+                result = num1 * num2;
+                console.log(`Result: ${num1} * ${num2} = ${result}`);
+            } else if (operation === 'divide') {
+                if (num2 !== 0) {
+                    result = num1 / num2;
+                    console.log(`Result: ${num1} / ${num2} = ${result}`);
+                } else {
+                    console.log('Error: Division by zero is not allowed.');
+                }
+            } else {
+                console.log('Invalid operation.');
+            }
+         }
+            */
+
+
+
+           /*function analyzeResults() {
+                let subjects =["Maths","Science","English","Social","French"];
+                let marks =[85,70,93,74,98];
+
+                 let total = 0;
+
+                for(let i = 0; i < marks.length ; i++) {
+                total += marks [i]; 
+                }
+                let average = total/marks.length;
+
+                let highest = Math.max(...marks);
+                let lowest = Math.min(...marks);
+
+                console.log("Subjects:",subjects.join(","));
+                console.log("Marks:",marks.join(","));
+                console.log("Total mark:",total);
+                console.log("Average mark:",average);
+                console.log("Highest mark:",highest);
+                console.log("Lowest mark:",lowest);
+            }
+
+            analyzeResults();
+            
+
+
+        function highest(){
+            let names = ["James","Righteous","Etornam","Henry","Gifty"];
+            let marks = [85,73,90,64,50];
+
+            let highest = marks[0];
+            let topStudent = names[0];
+
+            for( let i = 0;i < names.length; i++) {
+                if(marks[i] > highest){
+                    highest = marks[i];
+                    topStudent = names[i];
+                }
+            }
+
+            console.log(`The top student is  ${topStudent} with  ${highest} marks.`);
+        }
+        
+        highest();
+       
+
+
+        function checkEvenOdd(){
+            let numbers = [12,5,8,21,30,9,14];
+
+            console.log("Even Numbers:");
+            for(let i = 0; i < numbers.length; i++){
+                if (numbers[i] % 2 === 0){
+                    console.log(""+ numbers[i]);
+                }
+            }
+
+            console.log("Odd Numbers:");
+            for(let i = 0; i <numbers.length; i++){
+                if (numbers[i] % 2 !== 0){
+                    console.log(""+ numbers[i]);
+                }
+            }
+        }
+
+        checkEvenOdd();
+
+        
+
+         function findHighAndLow(){
+            let numbers =[42,17,1,59,20,10,23,18];
+
+            let highest = Math.max(... numbers);
+            let lowest = Math.min(...numbers);
+
+            console.log("Numnbers:" + numbers.join(","));
+            console.log("Highest number:" ,highest);
+            console.log("Lowest number:",lowest);
+
+         }
+
+         findHighAndLow();
+          
+
+
+          function gradeEvaluation(){
+            let students =["Righteous","Henry","Skyler","Scholar"];
+            let scores =[80,93,43,82];
+            
+            console.log("Students Grades:");
+            console.log("----------------");
+
+            for (let i = 0; i < students.length; i++){
+                let grade = scores[i] >=50?"Pass" :"Fail";
+                console.log(students[i] + ":"+ scores[i] +"-" + grade);
+            }
+
+            let total =0;
+            for(let i =0; i < scores.length; i++){
+                total += scores[i];
+            }
+
+            let average = total/ scores.length;
+            console.log("\nClass Average:" + average.toFixed(2));
+
+          }
+          gradeEvaluation();
+           */
+         
+    </script>
+
+
 <div id="calculator">
-    <!---smallupdate--->
     <input id="display" class="display" readonly>
     <div id="keys">
        
@@ -27,7 +234,7 @@
         <button onclick="appendToDisplay('0')">0</button>
         <button onclick="appendToDisplay('.')">.</button>
         <button onclick="calculate()"class="operator.btn yellowBtn">= </button>
-        <button onclick="appendToDisplay('/')"class="operator.btn yellowBtn">/<button>
+        <button onclick="appendToDisplay('/')"class="operator.btn yellowBtn">/</button>
         <button onclick="clearDisplay()" id="sat" class="soon">C</button>
     </div>
 </div>
@@ -121,6 +328,4 @@
     }
 </script>
 </body>
-
 </html>
-
